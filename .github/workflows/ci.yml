@@ -14,7 +14,7 @@ jobs:
 			- name: Check out repository
 				uses: actions/checkout@v4
 
-			- name: Check portfolio page
+			- name: Check portfolio pages
 				run: |
 					test -s index.html
 					grep -q '<h1>My portfolio</h1>' index.html
