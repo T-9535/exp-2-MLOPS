@@ -1,0 +1,23 @@
+name: CI
+
+on:
+	push:
+		branches: [main]
+	pull_request:
+		branches: [main]
+	workflow_dispatch:
+
+jobs:
+	check-portfolio:
+		runs-on: ubuntu-latest
+		steps:
+			- name: Check out repository
+				uses: actions/checkout@v4
+
+			- name: Check portfolio page
+				run: |
+					test -s index.html
+					grep -q '<h1>My portfolio</h1>' index.html
+					grep -q '<h2>Education</h2>' index.html
+					grep -q '<h2>Skills</h2>' index.html
+					grep -q '<h3>Projects</h3>' index.html
